@@ -25,4 +25,15 @@ Manifest.toml
 
 # Gitignore
 .vscode
+.idea
 graphs/__pycache__
+
+# Executables
+/bin/Arthur
+
+# CMake files
+/src/classical/cmake-build-debug
+/src/classical/CMakeFiles
+/src/classical/cmake_install.cmake
+/src/classical/CMakeCache.txt
+/build/

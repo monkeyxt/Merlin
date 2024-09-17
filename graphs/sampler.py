@@ -59,8 +59,9 @@ class KingGraphSampler:
         rand = np.random.default_rng()
         points = np.array([xx.flatten(),yy.flatten()]).T
         points = points[rand.permutation(self.x*self.y)[0:num_points],:]
-    
-        distances = np.sqrt((points[:,0] - points[:,0,None])**2 + (points[:,1] - points[:,1,None])**2)
+
+        distances = np.sqrt((points[:,0] - points[:,0,None])**2 + 
+                            (points[:,1] - points[:,1,None])**2)
         graph = nx.Graph(distances<np.sqrt(2)+1E-10)
         graph.remove_edges_from(nx.selfloop_edges(graph))
         instance = Instance()

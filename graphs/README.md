@@ -11,11 +11,13 @@ networkx
 ## Instructions
 
 Generate a random unit disk graph
-- `x`: width of lattice 
-- `y`: length of lattice
-- `p`: probability of edge
+- `-x [int]`: width of lattice 
+- `-y [int]`: length of lattice
+- `-p [float]`: probability of edge
+- `-o [file]`: place to write generated graph
+- `-s`: plot graph
 
 ```python
 # Simple example
-python generate -x 4 -y 4 -p 0.5
+python generate.py -x 4 -y 4 -p 0.5
 ```

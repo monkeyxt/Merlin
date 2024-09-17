@@ -26,8 +26,12 @@ class Instance(object):
         """Add an edge to our set of edges"""
         self.edges.add((min(u, v), max(u, v)))
 
-    def save_to_adj(self) -> str:
-        """Dumps the instance to a adjacency list"""
+    def save_to_file(self, outfile) -> str:
+        """Dumps the instance to an edgelist"""
+        with open(f"{outfile}.edgelist", 'w') as f:
+            f.write(f"{self.graph.number_of_nodes()}\n")
+            for edge in self.graph.edges():
+                f.write(f"{edge[0]} {edge[1]}\n")
 
     def get_networkx_graph(self) -> nx.Graph:
         """Returns the stored graph"""

@@ -41,18 +41,27 @@ def main():
                         type=float,
                         required=True,
                         default=0,
-                        help="The seed used to generate the graph")
-
+                        help="seed used to generate the graph")
+    parser.add_argument("-o", type = str, required=False, help="output file")
+    parser.add_argument("-s", type = bool, required=False, default = False, help="plot graph")
     args = parser.parse_args()
     x = args.x
     y = args.y
     p = args.probability
+    outfile = args.o
+    show_plot = args.s
 
     pos, instance = KingGraphSampler(x, y, p).generate()
     fig = plt.figure()
     ax = plt.subplot(1,1,1)
     plot(ax, instance.get_networkx_graph(), pos)
-    plt.show()
+    
+    if outfile:
+        np.savez(f'{outfile}.npz', array1=pos)
+        instance.save_to_file(f"{outfile}")
+
+    if show_plot:
+        plt.show()
 
 if __name__ == "__main__":
     main()
